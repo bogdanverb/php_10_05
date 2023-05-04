@@ -1,0 +1,160 @@
+@use '../common/vars' as *;
+@use '../common/mixins' as *;
+
+.open {
+  @media #{$tablets}{
+    &:before {
+      @include transition(all 0.3s ease);
+      height: 335px !important;
+    }
+    &:after {
+      @include transition(all 0.3s ease);
+      top: 313px !important;
+    }
+  }
+}
+
+.main_nav{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+  @include box-shadow(0, 2px, 5px, 0, rgba(0, 0, 0, 0.91),false);
+  @include clip-path-bottom;
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 83px;
+    background-color: $navColor;
+    z-index: -1;
+    @include clip-path-bottom;
+  }
+  &_link{
+    padding: 18px 16px;
+    display: inline-flex;
+    align-items: center;
+    font: $fontMenu;
+    box-sizing: content-box;
+    @include transition(all 0.3s ease);
+    &:last-child{
+      position: absolute;
+      right: 0;
+    }
+    i{
+      margin-right: 8px;
+      font-size: 18px;
+    }
+    &:hover{
+      text-shadow: 0 0 2px lightcoral;
+    }
+  }
+  @media #{$tablets}{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &_link.hide_able{
+      @include animate(dropDown, .31s, 1, forwards);
+      @include keyframes(dropDown){
+        0%, 50%{
+          color: transparentize($mainTextColor, 1);
+        }
+        100%{
+          color: $mainTextColor;
+        }
+      }
+    }
+    &_link:last-child{
+      position: absolute;
+      right: 63px;
+    }
+    input#_1 ~ .hide_able {
+      display: none;
+    }
+    input#_1:checked ~ .hide_able {
+      display: block;
+      width: 100%;
+      padding: 18px 16px;
+    }
+    input#_1:checked ~ .hide_able:last-child {
+      display: block;
+      width: 100%;
+      padding: 18px 16px 38px 16px;
+    }
+  }
+}
+
+#menuIcon{
+  display: none;
+  @media #{$tablets}{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 63px;
+    height: 63px;
+    font: $fontMenu;
+    box-sizing: content-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include transition(all 0.3s ease);
+  }
+}
+input#_1{
+  display: none; /* hide the checkboxes */
+}
+
+.menu_active{
+  @include animate(underline, .1s, 1, forwards);
+  @include keyframes(underline){
+      0%{
+        text-decoration-thickness: 0;
+        text-underline-offset: 0;
+      }
+      100%{
+        text-decoration-thickness: 2px;
+        text-underline-offset: 8px;
+      }
+  }
+  text-decoration-line: underline;
+  text-decoration-color: $mainTextColor;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+input#_1 + #menuIcon .ham{
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  @include transition(transform 0.4s ease);
+  .line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke:$mainTextColor;
+    stroke-width: 5px;
+    stroke-linecap:round;
+  }
+  .top {
+    stroke-dasharray: 40 139;
+  }
+  .bottom {
+    stroke-dasharray: 40 180;
+  }
+}
+
+input#_1:checked + #menuIcon{
+  .hamRotate{
+    @include rotate(45);
+  }
+  .ham .top {
+    stroke-dashoffset: -98px;
+  }
+  .ham .bottom {
+    stroke-dashoffset: -138px;
+  }
+}

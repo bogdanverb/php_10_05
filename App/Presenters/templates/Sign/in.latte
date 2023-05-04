@@ -1,0 +1,24 @@
+{block content}
+    <div class="login_content">
+        <h1 class="content_heading" id="login_h1">Login</h1>
+
+        <form n:name=signInForm class="login_content_form" id="form_reg">
+            <label n:name=login for="login">Login</label>
+            <input type="text" n:name=login id="login" placeholder="Login">
+
+            <label n:name=password for="password">Password</label>
+            <input type="password" n:name=password id="password" placeholder="Password">
+
+            <button type="submit" n:name=send class="btn long_btn300">Sign up</button>
+        </form>
+
+        <i class="fa-solid fa-circle-question"></i>
+        <a
+            type="submit"
+            id="login_btn"
+            n:href="Sign:up"
+        >
+            Ще немає акаунту?
+        </a>
+    </div>
+{/block}

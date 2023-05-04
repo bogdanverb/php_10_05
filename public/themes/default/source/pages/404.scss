@@ -1,0 +1,25 @@
+@use '../common/vars' as *;
+@use '../common/mixins' as *;
+
+.not_found_content{
+  @extend .main_content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include image-2x('/themes/default/images/bg_404.jpg',' /themes/default/images/bg_404_2x.jpg');
+  @include clip-path-bottom;
+  > h1{
+    @extend .main_header_logo_link;
+  }
+  > p{
+    font: $fontH1;
+  }
+  > a{
+    @extend .btn;
+    margin-top: 20px;
+    i{
+      margin-right: 6px;
+    }
+  }
+}

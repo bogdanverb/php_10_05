@@ -1,0 +1,23 @@
+@use '../common/vars' as *;
+@use '../common/mixins' as *;
+
+.news_content{
+  @extend .main_content;
+  @include clip-path-bottom;
+
+  &_single_image{
+    display: block;
+    margin: 20px auto;
+    max-width: clamp(300px, 50%, 600px);
+    object-fit: cover;
+  }
+  &_single_article{
+    padding: 0 10% 20px 10%;
+    font: $fontText;
+  }
+  &_single_author{
+    font: $fontAuthor;
+    display: block;
+    padding: 0 10% 20px 10%;
+  }
+}

@@ -1,0 +1,67 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+
+
+.btn{
+  display: block;
+  color: $mainBgColor;
+  background-color: $textColor;
+  padding: 12px 12px;
+  text-align: center;
+  font: $fontBtn;
+  @include transition(all 0.3s ease);
+  @include box-sizing(border-box);
+  &:hover{
+    background-color: $mainTextColor;
+  }
+}
+
+.long_btn {
+  @extend .btn;
+  width: 80%;
+  margin: 30px auto 0 auto;
+}
+
+.long_btn300 {
+  @extend .btn;
+  width: 300px;
+  margin: 30px auto 0 auto;
+}
+
+#live_span_holiday{
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  display: block;
+  color: $mainBgColor;
+  font: $fontH2;
+  @include translate(-50%, 0);
+  @include transition(all 0.3s ease-in-out);
+  background-color: transparentize(lighten($mainTextColor,25%), 0.25);
+  @include clip-path-mini;
+  &:hover{
+    background-color: $mainTextColor;
+    @include clip-path-mini-hover;
+  }
+}
+
+.input{
+  min-width: 100px;
+  padding: 12px 12px;
+  outline: none;
+  border: 1px solid transparentize(lighten($mainTextColor,25%), 0.5);
+  @include transition(border 0.3s ease);
+  @include box-sizing(border-box);
+  &:focus{
+    border: 1px solid $mainTextColor;
+  }
+}
+
+.content_heading{
+  font: $fontH1;
+  text-align: center;
+  margin: 40px 0 0 0;
+}

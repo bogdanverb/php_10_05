@@ -1,0 +1,7 @@
+parameters:
+
+
+database:
+    dsn: 'mysql:host=hostname;dbname=etistudents'
+    user: 'username'
+    password: 'password'

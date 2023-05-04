@@ -1,0 +1,50 @@
+<nav class="main_nav">
+    <input id="_1" type="checkbox">
+    <label id="menuIcon" class="collapse" for="_1" onclick="this.parentElement.classList.toggle('open')">
+        <svg class="ham hamRotate" viewBox="0 0 100 100"  width="36" height="36">
+            <path
+                    class="line top"
+                    d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40" />
+            <path
+                    class="line middle"
+                    d="m 30,50 h 40" />
+            <path
+                    class="line bottom"
+                    d="m 30,67 h 40 c 12.796276,0 15.357889,-11.717785 15.357889,-26.851538 0,-15.133752 -4.786586,-27.274118 -16.667516,-27.274118 -11.88093,0 -18.499247,6.994427 -18.435284,17.125656 l 0.252538,40" />
+        </svg>
+    </label>
+    <a id="nav_section_header"
+       class="main_nav_link underline" href="/">
+        <i class="fa-solid fa-house-chimney"></i>
+        <span class="">HOME</span>
+    </a>
+    <a id="nav_section_about"
+       class="main_nav_link hide_able underline"
+       href="/about">
+        <i class="fa-solid fa-circle-info"></i>
+        <span class="">ABOUT</span>
+    </a>
+    <a id="nav_section_news"
+       class="main_nav_link hide_able underline"
+       href="/news">
+        <i class="fa-solid fa-rss"></i>
+        <span class="">NEWS</span>
+    </a>
+    <a id="nav_section_sp"
+       class="main_nav_link hide_able underline"
+       href="/parliament">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span class="">SP</span>
+    </a>
+    <a id="nav_section_contacts"
+       class="main_nav_link hide_able underline"
+       href="/contacts">
+        <i class="fa-solid fa-phone"></i>
+        <span class="">CONTACTS</span>
+    </a>
+    {if $user->isLoggedIn()}
+        <a class="main_nav_link" n:href="Sign:out"><i class="fa-solid fa-right-from-bracket"></i>LOGOUT</a>
+    {else}
+        <a class="main_nav_link" n:href="Sign:in"><i class="fa-solid fa-right-to-bracket"></i>LOGIN</a>
+    {/if}
+</nav>

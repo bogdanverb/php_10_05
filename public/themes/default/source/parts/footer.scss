@@ -1,0 +1,88 @@
+@use '../common/vars' as *;
+@use '../common/mixins' as *;
+
+.main_footer{
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 60px 0 10px 0;
+  background-color: $textColor;
+  color: $textColor;
+  @include transition(all 0.3s ease);
+  @include clip-path-top;
+  &:hover{
+    color: $mainTextColor;
+    background-color: $footerBgColor;
+  }
+  &_button{
+    display: block;
+    margin: 0 auto 60px auto;
+    padding: 20px 16px 10px 16px;
+    font: $fontText;
+    background-color: $mainBgColor;
+    color: inherit;
+    @include transition(all 0.3s ease);
+    @include clip-path-button-top;
+
+
+    &:hover{
+      background-color: $hoverColor;
+      clip-path: polygon(0 10px, 50% 0, 100% 10px, 100% 100%, 50% calc(100% - 10px) , 0 100%);
+      @include clip-path-button-top-hover;
+    }
+    i{
+      margin-right: 16px;
+    }
+  }
+  &_media{
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 30px;
+    .fa{
+      display: inline-block;
+      text-rendering: auto;
+      font: $fontAwesome;
+      color: $mainBgColor;
+      @include transition(all 0.3s ease);
+      &:hover{
+        color: $hoverColor;
+        opacity: 0.75;
+      }
+    }
+  }
+  &_copy{
+    display: block;
+    text-align: center;
+    font: $fontCopy;
+    color: $mainBgColor;
+    i{
+      margin-right: 4px;
+    }
+  }
+  &_credits{
+    display: grid;
+    grid-template:  auto/ 1fr 1fr 1fr;
+    padding: 0 10% 40px 10%;
+    color: $mainBgColor !important;
+    font: $fontCopy;
+    text-align: center;
+    @media #{$phones-big}{
+      grid-template:  auto/ 1fr;
+      > div{
+        border-bottom: 1px solid $mainBgColor;
+        padding-bottom: 20px;
+      }
+      h2{
+        margin-top: 20px;
+      }
+    }
+    h2{
+      font: $fontH2;
+      margin-bottom: 10px;
+    }
+    a{
+      display: block;
+      padding: 4px 0;
+    }
+  }
+}

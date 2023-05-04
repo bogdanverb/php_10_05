@@ -1,0 +1,40 @@
+@use "../common/vars" as *;
+@use "../common/mixins" as *;
+
+.passport_content{
+  @extend .main_content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $mainTextColor;
+  font: $mainFont;
+  @include clip-path-bottom;
+  h4{
+    margin-top: 20px;
+    font: $headerFont;
+  }
+  b{
+    display: block;
+    font: $boldFont;
+  }
+  ul, ol{
+    text-align: left;
+  }
+}
+
+.none_ul > li{
+  list-style: none;
+}
+.normal_ul > li {
+  list-style: disc inside;
+}
+.decimal_ul > li{
+  list-style: decimal inside;
+}
+.second_ul{
+  margin-left: 20px;
+  ol li{
+    margin-left: 20px;
+  }
+}

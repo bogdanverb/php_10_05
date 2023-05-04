@@ -1,0 +1,7 @@
+@use '../common/vars' as *;
+@use '../common/mixins' as *;
+
+.parliament_content{
+  @extend .main_content;
+  @include clip-path-bottom;
+}
