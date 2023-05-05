@@ -157,7 +157,7 @@ final class SignPresenter extends Nette\Application\UI\Presenter
             ]);
 
             $this->getUser()->login($data->login, $data->password);
-            $this->redirectUrl('/');
+            $this->redirectUrl('Home:home');
         } else {
             $form->addError('Користувач з таким іменем вже існує.');
         }

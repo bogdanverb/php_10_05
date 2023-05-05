@@ -1,22 +1,22 @@
 {block content}
     <div class="login_content">
         <h1 class="content_heading" id="login_h1">Register</h1>
-        {* control signUpForm *}
-
         <form n:name=signUpForm class="login_content_form" id="form_reg">
             <label n:name=login for="login">Login</label>
             <input type="text" n:name=login id="login" placeholder="Login">
 
             <label n:name=email for="email">Email</label>
-            <input type="text" n:name=email id="email" placeholder="Login">
+            <input type="text" n:name=email id="email" placeholder="Email" onkeyup="checkEmail();">
 
             <label n:name=password for="password">Password</label>
-            <input type="password" n:name=password id="password" placeholder="Password">
+            <input type="password" n:name=password id="password" placeholder="Password" onkeyup="checkPassword();">
 
             <label n:name=password_c for="password_c">Confirm password</label>
-            <input type="password" n:name=password_c id="password_c" placeholder="Confirm password">
+            <input type="password" n:name=password_c id="password_c" placeholder="Confirm password" onkeyup="checkPassword();">
 
-            <button type="submit" n:name=send class="btn long_btn300">Sign up</button>
+            <p id="error"></p>
+
+            <button type="submit" n:name=send class="btn long_btn300" disabled id="submit">Sign up</button>
         </form>
 
         <i class="fa-solid fa-circle-question"></i>
@@ -28,4 +28,5 @@
             Вже зареєстровані?
         </a>
     </div>
+    <script src='{$basePath}/js/formChecker.js'></script>
 {/block}

@@ -32,5 +32,4 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
             $this->redirect('Sign:in');
         }
     }
-
 }

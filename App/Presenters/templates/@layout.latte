@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="EN">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width" />
 
+<head>
 	<title>{ifset $title}{$title}{/ifset}</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{$basePath}/themes/default/main.css?v={date("Ymd")}">
+
+	<script src='{$basePath}/js/jquery.min.js'></script>
+	<script src='{$basePath}/js/fontawesome.js'></script>
+
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
-	{include "elements/header.latte"}
+	{include "elements/nav.latte"}
 
 	{include content}
 
