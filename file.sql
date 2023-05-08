@@ -59,3 +59,4 @@ CREATE TABLE news
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+ALTER TABLE news ADD COLUMN news_short_title VARCHAR(40);

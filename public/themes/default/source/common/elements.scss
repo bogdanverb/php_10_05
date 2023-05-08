@@ -61,7 +61,15 @@
 }
 
 .content_heading{
+  @include clip-path-both;
+  padding: 40px 10% 40px 10%;
   font: $fontH1;
   text-align: center;
-  margin: 40px 0 0 0;
+  background-color: transparentize($textColor, 0.8);
+  color: $textColor;
+  @include transition(all 0.3s ease);
+  &:hover{
+    background-color: $footerBgColor;
+    color: $mainBgColor;
+  }
 }

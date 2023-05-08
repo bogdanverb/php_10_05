@@ -1,0 +1,18 @@
+{block content}
+
+    <div class="news_content">
+        <h1 class="content_heading">{$post->news_title}</h1>
+        <img class="news_content_single_image" src="{$basePath}{$post->image_url}" alt="#1">
+        <div class="news_content_single_article">
+           {$post->news_content|noescape}
+        </div>
+        <em class="news_content_single_author">
+            <span>Автор: {$post->news_user_login}</span>
+            <span>Дата пубікації: {$post->news_date_created}</span>
+            <span>Дата редагування: {$post->news_date_updated}</span>
+       </em>
+    </div>
+
+
+
+{/block}

@@ -3,7 +3,127 @@
 
     <div class="main_content">
 
+        <h1 class="content_heading">Останні новини</h1>
+
+        <div class="section_news">
+            <div class="section_news_grid">
+                {foreach $news as $article}
+                    <div class="section_news_grid_item">
+                        <h2>{$article->news_title}</h2>
+                        <img src="{$basePath}{$article->image_url}" alt="#1">
+                        <p class="short">{$article->news_short_title} ...</p>
+                        <em>{$article->news_date_created}</em>
+                        <em>Автор: {$article->news_user_login}</em>
+                        <em class="read_more"><a n:href="News:show $article->news_id">Детальніше...</a></em>
+                    </div>
+                {/foreach}
+
+            </div>
+        </div>
+
+        <div class="line_block">
+            <div class="line_block_item">
+                <h3>100+</h3>
+                <p>Users</p>
+            </div>
+            <div class="line_block_item">
+                <h3>200+</h3>
+                <p>Posts</p>
+            </div>
+            <div class="line_block_item">
+                <h3>1000+</h3>
+                <p>Messages</p>
+            </div>
+            <div class="line_block_item">
+                <h3>12+</h3>
+                <p>Developers</p>
+            </div>
+        </div>
+
+        <h1 class="content_heading">Галерея</h1>
+
+        <section class="section_gallery">
+            <div class="gallery">
+                <img src="/files/img/about_gallery/1.jpg" alt="">
+                <img src="/files/img/about_gallery/2.jpg" alt="">
+                <img src="/files/img/about_gallery/3.jpg" alt="">
+                <img src="/files/img/about_gallery/4.jpg" alt="">
+                <img src="/files/img/about_gallery/5.jpg" alt="">
+                <img src="/files/img/about_gallery/6.jpg" alt="">
+                <img src="/files/img/about_gallery/7.jpg" alt="">
+                <img src="/files/img/about_gallery/8.jpg" alt="">
+                <img src="/files/img/about_gallery/9.jpg" alt="">
+            </div>
+         </section>
+
+        <h1 class="content_heading">Мапа сайту</h1>
+
+        <section class="section_about">
+            <div class="section_about_nav">
+                <div class="section_about_nav_block">
+                    <h2>Гостям</h2>
+                    <img src="/files/img/about_previews/_school.png" alt="#1">
+                    <p>Розділи та інформація для гостей інституту, школярів та їх батьків, слухачів.</p>
+                    <ul class="section_about_nav_block_list">
+                        <li><a href="">Про інститут</a></li>
+                        <li><a href="">Події</a></li>
+                    </ul>
+                </div>
+                <div class="section_about_nav_block">
+                    <h2>Абітурієнтам</h2>
+                    <img src="/files/img/about_previews/_abiturient.png" alt="#1">
+                    <p>Розділи та інформація для абітурієнтів, майбутніх абітурієнтів та їх батьків.</p>
+                    <ul class="section_about_nav_block_list">
+                        <li><a href="">Вступна кампанія</a></li>
+                        <li><a href="">Навчальні програми</a></li>
+                    </ul>
+                </div>
+                <div class="section_about_nav_block">
+                    <h2>Студентам</h2>
+                    <img src="/files/img/about_previews/_students.png" alt="#1">
+                    <p>Розділи та інформація для студентів очного, заочного відділення.</p>
+                    <ul class="section_about_nav_block_list">
+                        <li><a href="">Розклад</a></li>
+                        <li><a href="">Викладачі</a></li>
+                    </ul>
+                </div>
+                <div class="section_about_nav_block">
+                    <h2>Викладачам</h2>
+                    <img src="/files/img/about_previews/_teacher.png" alt="#1">
+                    <p>Розділи та інформація для викладачів, методистів та інших осіб, задіяних в навчальному процесі.</p>
+                    <ul class="section_about_nav_block_list">
+                        <li><a href="">Розклад</a></li>
+                        <li><a href="">Списки груп</a></li>
+                    </ul>
+                </div>
+                <div class="section_about_nav_block">
+                    <h2>Деканату</h2>
+                    <img src="/files/img/about_previews/_director.png" alt="#1">
+                    <p>Розділи та інформація для керівництва інституту та деканату.</p>
+                    <ul class="section_about_nav_block_list">
+                        <li><a href="">Інформація</a></li>
+                        <li><a href="">Ще інформація</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section_contacts">
+            <div class="section_contacts_image"></div>
+            <div class="section_contacts_grid">
+                <div class="section_contacts_grid_map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2360.666023710425!2d32.261622313937515!3d48.51704052763144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d05d53964db68d%3A0x90cc56fb009280a3!2sEconomics%20and%20technology%20institute%20Robert%20Elworthy!5e1!3m2!1sen!2sus!4v1673040179264!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="section_contacts_grid_form">
+                    <a href="https://goo.gl/maps/9YRDLrUvHyCNqqYf8" class="contacts_adress"><i class="fa-solid fa-map-location-dot"></i>вул. Є. Чикаленка, 3, Кропивницький</a>
+                    <a href="tel:+380661259997" class="contacts_phone"><i class="fa-solid fa-phone-volume"></i>+38 (066) 125 99 97</a>
+                    <a href="mailto:eti.activestudents@gmail.com" class="contacts_email"><i class="fa-solid fa-envelope"></i>eti.activestudents@gmail.com</a>
+                </div>
+            </div>
+        </section>
+
     </div>
+    <script type="text/javascript" src="/js/holidays.js" ></script>
 {/block}
 
 

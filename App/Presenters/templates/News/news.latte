@@ -1,37 +1,23 @@
 {block content}
     <div class="news_content">
+        <h1 class="content_heading">Всі новини</h1>
         <div class="section_news_grid">
-            <div class="section_news_grid_item">
-                <h2>Heading #1</h2>
-                <img src="files/img/news_previews/news_1.jpg" alt="#1">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor et facilis illum modi, reprehenderit sequi!</p>
-                <em>01/01/2023 Author Name</em>
-                <em class="read_more"><a href="/news/1">Read more...</a></em>
+
+            {foreach $news as $article}
+                <div class="section_news_grid_item">
+                    <h2>{$article->news_title}</h2>
+                    <img src="{$basePath}{$article->image_url}" alt="#1">
+                    <p class="short">{$article->news_short_title} ...</p>
+                    <em>{$article->news_date_created}</em>
+                    <em>Автор: {$article->news_user_login}</em>
+                    <em class="read_more"><a n:href="News:show $article->news_id">Детальніше...</a></em>
+                </div>
+            {/foreach}
+
+            <div class="section_news_grid_item add">
+                <a class="add_new" n:href="News:add"><i class="fa-solid fa-plus"></i>&nbsp;Додати новину</a>
             </div>
-            <div class="section_news_grid_item">
-                <h2>Heading #1</h2>
-                <img src="files/img/news_previews/news_1.jpg" alt="#1">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor et facilis illum modi, reprehenderit sequi!</p>
-                <em>01/01/2023 Author Name</em>
-                <em class="read_more"><a href="/news/1">Read more...</a></em>
-            </div>
-            <div class="section_news_grid_item">
-                <h2>Heading #1</h2>
-                <img src="files/img/news_previews/news_1.jpg" alt="#1">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor et facilis illum modi, reprehenderit sequi!</p>
-                <em>01/01/2023 Author Name</em>
-                <em class="read_more"><a href="/news/1">Read more...</a></em>
-            </div>
-            <div class="section_news_grid_item">
-                <h2>Heading #1</h2>
-                <img src="files/img/news_previews/news_1.jpg" alt="#1">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor et facilis illum modi, reprehenderit sequi!</p>
-                <em>01/01/2023 Author Name</em>
-                <em class="read_more"><a href="/news/1">Read more...</a></em>
-            </div>
-            <div class="section_news_grid_item">
-                <a class="add_new" href=""><i class="fa-solid fa-plus"></i>&nbsp;Додати новину</a>
-            </div>
+
         </div>
     </div>
 {/block}

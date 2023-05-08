@@ -1,0 +1,26 @@
+{block content}
+
+    <div class="news_content">
+
+        <h1 class="content_heading">Створити статтю</h1>
+
+        <form n:name=addNewsForm class="news_content_form" id="form_add_news">
+
+            <label n:name=title for="title">Заголовок статті</label>
+            <input type="text" n:name=title id="title" placeholder="title">
+
+            <label n:name=short_title for="short_title">Короткий опис (40 символів)</label>
+            <input type="text" n:name=title id="short_title" placeholder="short title">
+
+            <label n:name=text for="myTextArea">Текст статті</label>
+            <textarea id="myTextArea" n:name=text placeholder="text"></textarea>
+
+            <label n:name=file for="file">Додайте зображення до статті</label>
+            <input type="file" n:name=file id="file" placeholder="file">
+
+            <button type="submit" n:name=send class="btn long_btn300">Створити новину</button>
+        </form>
+    </div>
+
+
+{/block}

@@ -23,6 +23,8 @@ final class RouterFactory
             ->addRoute('parliament', 'Pages:parliament')
             ->addRoute('passport', 'Pages:passport')
             ->addRoute('news', 'News:index')
+            ->addRoute('news/add', 'News:add')
+            ->addRoute('news/<postId>', 'News:show')
 
             ->addRoute('sign/out', 'Sign:out')
             ->addRoute('sign/in', 'Sign:in')

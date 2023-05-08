@@ -17,7 +17,12 @@
 
 	<script src='{$basePath}/js/jquery.min.js'></script>
 	<script src='{$basePath}/js/fontawesome.js'></script>
-
+	<script src="{$basePath}/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+	<script>
+		tinymce.init({
+			selector: '#myTextArea',
+		});
+	</script>
 </head>
 
 <body>
@@ -28,7 +33,7 @@
 	{include "elements/footer.latte"}
 
 	{block scripts}
-	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+		<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
 	{/block}
 </body>
 </html>

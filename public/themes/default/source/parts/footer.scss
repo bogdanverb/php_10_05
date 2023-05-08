@@ -10,7 +10,6 @@
   @include transition(all 0.3s ease);
   @include clip-path-top;
   &:hover{
-    color: $mainTextColor;
     background-color: $footerBgColor;
   }
   &_button{
