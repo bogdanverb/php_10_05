@@ -2,6 +2,16 @@
 
     <div class="news_content">
         <h1 class="content_heading">{$post->news_title}</h1>
+
+        {foreach $flashes as $key => $flash}
+            <div id="flash_{$key}"
+                 class="flash {$flash->type}"
+                 onclick="closeMessage(this);"
+            >
+                {$flash->message}
+            </div>
+        {/foreach}
+
         <img class="news_content_single_image" src="{$basePath}{$post->image_url}" alt="#1">
         <div class="news_content_single_article">
            {$post->news_content|noescape}
@@ -13,7 +23,6 @@
        </em>
     </div>
 
-    <a n:href="News:edit $post->news_id">Редагувати пост</a>
-
+    <a class="btn news_edit" n:href="News:edit $post->news_id">Редагувати пост</a>
 
 {/block}

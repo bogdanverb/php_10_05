@@ -75,17 +75,31 @@
 }
 
 .flash{
-  color: $mainBgColor;
+  text-align: center;
   z-index: 110;
   line-height: 30px;
-  width: 300px;
   margin: 10px auto;
 }
 
 .error{
+  width: 300px;
+  color: $mainBgColor;
   background: linear-gradient(to right, #00000000 0%, coral 10%, coral 90%, #00000000 100%);
 }
 
 .success{
+  width: 300px;
+  color: $mainBgColor;
   background: linear-gradient(to right, #00000000 0%, limegreen 10%, limegreen 90%, #00000000 100%);
+}
+
+.info{
+  width: clamp(300px, 50%, 600px);
+  color: $mainBgColor;
+  background: linear-gradient(to right, #00000000 0%, dodgerblue 10%, dodgerblue 90%, #00000000 100%);
+}
+
+.news_edit{
+  line-height: 80px;
+  @include clip-path-both;
 }

@@ -82,9 +82,7 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
     {
         $news_user_id = $this->getUser()->getIdentity()->getId();
         $news_user_login = $this->getUser()->getIdentity()->getData()['login'];
-        $file = $data->file;
-        $file->move('./uploads/news/' . $file->name);
-        $image_url = '/uploads/news/'.$file->name;
+
 
         $postId = $this->getParameter('postId');
 
@@ -92,8 +90,22 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
             $post = $this->database
                 ->table('news')
                 ->get($postId);
-            $post->update($data);
+                $data = (array) $data;
+            $post->update(
+                [
+                    'news_title' => $data['title'],
+                    'news_short_title' => $data['short_title'],
+                    'news_content' => $data['text'],
+                    'news_user_id' => $news_user_id,
+                    'news_user_login' => $news_user_login,
+                ]
+            );
+            $this->redirect("News:index");
         } else {
+            $file = $data->file;
+            $file->move('./uploads/news/' . $file->name);
+            $image_url = '/uploads/news/'.$file->name;
+
             $this->database->
             table('news')->
             insert([
@@ -104,23 +116,30 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
                 'news_user_id' => $news_user_id,
                 'news_user_login' => $news_user_login,
             ]);
+            $this->redirect(':index');
         }
-
-        $this->redirect(':index');
     }
 
     public function renderEdit(int $postId): void
     {
-        $post = $this->database
+        $news = $this->database
             ->table('news')
             ->get($postId);
 
-        if (!$post) {
-            $this->flashMessage('Пост не найден');
+        if (!$news) {
+            $this->flashMessage('Пост не знайдено');
         }
 
-        $this->getComponent('addNewsForm')
-            ->setDefaults($post->toArray());
+        $user_id = $this->getUser()->getIdentity()->getId();
+        $news_user_id = $news->news_user_id;
+
+        if ($user_id !== $news_user_id) {
+            $this->flashMessage('Ви не можете редагувати чужі пости', 'info');
+            $this->redirect('News:show', $postId);
+        } else{
+            $this->getTemplate()->title = $news->news_title;
+            $this->getTemplate()->news = $news;
+        }
     }
 
     /**

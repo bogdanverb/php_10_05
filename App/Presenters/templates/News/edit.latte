@@ -1,4 +1,42 @@
 {block content}
-    <h1 class="content_heading">Редагування новини</h1>
+    <div class="news_content">
+        <h1 class="content_heading">Редагування новини</h1>
 
-{control addNewsForm}
+        <form n:name=addNewsForm class="news_content_form" id="form_add_news">
+
+            <label n:name=title for="title">Заголовок статті</label>
+            <input n:name=title
+                type="text"
+                id="title"
+                placeholder="title"
+                value={$news->news_title}
+            >
+
+            <label n:name=short_title for="short_title">Короткий опис (40 символів)</label>
+            <input n:name=short_title
+                    type="text"
+                    id="short_title"
+                    placeholder="short title"
+                    value={$news->news_short_title}
+            >
+
+            <label n:name=text for="myTextArea">Текст статті</label>
+            <textarea id="myTextArea" n:name=text placeholder="text">
+            </textarea>
+
+{*            <label n:name=file for="file">Додайте зображення до статті</label>*}
+{*            <input type="file" n:name=file id="file" placeholder="file" value={$news->image_url}>*}
+
+            <button type="submit" n:name=send class="btn long_btn300">Редагувати новину</button>
+        </form>
+
+        <script>
+            window.onload = () =>{
+                let text = document.querySelector('#myTextArea');
+                text.value = {$news->news_content};
+            }
+        </script>
+
+    </div>
+
+{/block}
