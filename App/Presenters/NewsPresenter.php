@@ -100,7 +100,8 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
                     'news_user_login' => $news_user_login,
                 ]
             );
-            $this->redirect("News:index");
+            $this->flashMessage('Новину було відредаговано', 'success');
+            $this->redirect('News:show', $postId);
         } else {
             $file = $data->file;
             $file->move('./uploads/news/' . $file->name);
@@ -136,7 +137,7 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
         if ($user_id !== $news_user_id) {
             $this->flashMessage('Ви не можете редагувати чужі пости', 'info');
             $this->redirect('News:show', $postId);
-        } else{
+        } else {
             $this->getTemplate()->title = $news->news_title;
             $this->getTemplate()->news = $news;
         }

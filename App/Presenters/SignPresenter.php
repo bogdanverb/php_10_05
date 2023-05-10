@@ -38,8 +38,8 @@ final class SignPresenter extends Nette\Application\UI\Presenter
 
         $form->addText('login', "Ім'я користувача:");
         $form->addPassword('password', 'Пароль:');
-//        $form->addReCaptcha('recaptcha', $label = 'Captcha')
-//            ->setMessage('Are you a bot?');
+        $form->addReCaptcha('recaptcha', $label = 'Captcha')
+            ->setMessage('Are you a bot?');
         $form->addSubmit('send', 'Увійти');
 
         $form->onSuccess[] = [$this, 'signInFormSucceeded'];
@@ -75,8 +75,8 @@ final class SignPresenter extends Nette\Application\UI\Presenter
         $form->addPassword('password_c', 'Повторіть пароль:');
         $form->addText('email', 'E-mail:');
 
-//        $form->addReCaptcha('recaptcha', $label = 'Captcha')
-//            ->setMessage('Are you a bot?');
+        $form->addReCaptcha('recaptcha', $label = 'Captcha')
+            ->setMessage('Are you a bot?');
 
         $form->addSubmit('send', 'Зареєструватись');
 
