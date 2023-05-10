@@ -11,6 +11,9 @@ use Nette\Application\UI\Form;
 use stdClass;
 use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * @middleware MyMiddleware
+ */
 final class NewsPresenter extends Nette\Application\UI\Presenter
 {
     private string $title = 'News';
@@ -59,8 +62,8 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
     protected function createComponentAddNewsForm(): Form
     {
         $form = new Form;
-        $form->addText('title', 'Заголовок:');
-        $form->addText('short_title', 'Опис:');
+        $form->addText('title');
+        $form->addText('short_title');
         $form->addTextArea('text', 'Текст:');
         $form->addUpload('file', 'Зображення:');
         $form->addSubmit('send', 'Додати');
@@ -83,18 +86,41 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
         $file->move('./uploads/news/' . $file->name);
         $image_url = '/uploads/news/'.$file->name;
 
-        $this->database->
+        $postId = $this->getParameter('postId');
+
+        if ($postId) {
+            $post = $this->database
+                ->table('news')
+                ->get($postId);
+            $post->update($data);
+        } else {
+            $this->database->
             table('news')->
             insert([
                 'news_title' => $data->title,
                 'news_short_title' => $data->short_title,
                 'news_content' => $data->text,
-                'image_url' =>  $image_url,
+                'image_url' => $image_url,
                 'news_user_id' => $news_user_id,
                 'news_user_login' => $news_user_login,
             ]);
+        }
 
-        $this->redirect('News:index');
+        $this->redirect(':index');
+    }
+
+    public function renderEdit(int $postId): void
+    {
+        $post = $this->database
+            ->table('news')
+            ->get($postId);
+
+        if (!$post) {
+            $this->flashMessage('Пост не найден');
+        }
+
+        $this->getComponent('addNewsForm')
+            ->setDefaults($post->toArray());
     }
 
     /**
@@ -107,5 +133,15 @@ final class NewsPresenter extends Nette\Application\UI\Presenter
         if (!$this->getUser()->isLoggedIn()) {
             $this->redirect('Sign:in');
         }
+
+//        $parameters = $this->getParameters();
+//        $firstParameter = $parameters['action'];
+//
+//        if ($firstParameter === 'add') {
+//            if (!$this->getUser()->isInRole('admin')
+//                || !$this->getUser()->isInRole('editor')) {
+//                $this->redirect('News:index');
+//            }
+//        }
     }
 }

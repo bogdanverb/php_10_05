@@ -21,12 +21,12 @@ readonly class MyAuthenticator implements Nette\Security\Authenticator
             ->fetch();
 
         if (!$userInfo) {
-            throw new Nette\Security\AuthenticationException('User not found.');
+            throw new Nette\Security\AuthenticationException('Користувача не знайдено.');
         }
 
         if (!$this->passwords->verify($password, $userInfo->password)) {
             throw new Nette\Security\AuthenticationException(
-                'Invalid password.'
+                'Невірний пароль.'
             );
         }
 

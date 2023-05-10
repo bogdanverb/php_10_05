@@ -25,6 +25,7 @@ final class RouterFactory
             ->addRoute('news', 'News:index')
             ->addRoute('news/add', 'News:add')
             ->addRoute('news/<postId>', 'News:show')
+            ->addRoute('news/<postId>/edit', 'News:edit')
 
             ->addRoute('sign/out', 'Sign:out')
             ->addRoute('sign/in', 'Sign:in')

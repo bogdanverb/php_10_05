@@ -3,13 +3,28 @@
         <h1 class="content_heading" id="login_h1">Login</h1>
 
         <form n:name=signInForm class="login_content_form" id="form_reg">
-            <label n:name=login for="login">Login</label>
-            <input type="text" n:name=login id="login" placeholder="Login">
 
-            <label n:name=password for="password">Password</label>
+            <label n:name=login for="login">Login</label>
+            <input n:name=login
+                    type="text"
+                    id="login"
+                    placeholder="Login"
+                    onkeyup="checkLogin();"
+                    onchange="checkLogin();"
+                    onclick="checkLogin();"
+                    onblur="clearMessage()"
+            >
+
+            <label n:name=password for="password">
+                Password
+                <i class="fa-sharp fa-solid fa-eye-slash" onclick="togglePassword(this)"></i>
+            </label>
             <input type="password" n:name=password id="password" placeholder="Password">
 
-            <button type="submit" n:name=send class="btn long_btn300">Sign up</button>
+{*            <div n:name="recaptcha"></div>*}
+
+            <button type="submit" n:name=send class="btn long_btn300" id="submit">Sign up</button>
+
         </form>
 
         <i class="fa-solid fa-circle-question"></i>
@@ -20,5 +35,15 @@
         >
             Ще немає акаунту?
         </a>
+        <div class="flash error" id="form_error" onclick="closeMessage(this)"></div>
+        {foreach $flashes as $key => $flash}
+            <div id="flash_{$key}"
+                 class="flash {$flash->type}"
+                 onclick="closeMessage(this);"
+            >
+                {$flash->message}
+            </div>
+        {/foreach}
+{*        <script src='https://www.google.com/recaptcha/api.js}'></script>*}
     </div>
 {/block}

@@ -19,7 +19,9 @@
 		"nette/utils": "^4.0",
 		"latte/latte": "^3.0",
 		"tracy/tracy": "^2.9",
-		"jetbrains/phpstorm-stubs": "^2022.3"
+		"jetbrains/phpstorm-stubs": "^2022.3",
+		"tinymce/tinymce": "^6.4",
+		"contributte/recaptcha": "^3.5"
 	},
 	"require-dev": {
 		"nette/tester": "^2.4",

@@ -1,0 +1,6 @@
+extensions:
+    recaptcha: Contributte\ReCaptcha\DI\ReCaptchaExtension
+
+recaptcha:
+    secretKey: 6LeuQPIlAAAAAPrnsQHTxA1r_3Ag1q8oNc4EZ9pa
+    siteKey: 6LeuQPIlAAAAACx32YCIB1FzIuh460TpljY5qog4
